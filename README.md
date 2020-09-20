@@ -37,7 +37,25 @@ Get IGV for your operating system (you don't need the command line version):
 
 Installation
 ================================================================================
-from your home directory on the command line
+From your home directory on the command line:
+
+```
+git clone https://github.com/chaseaw/plasmid-align.git
+```
+
+This will create a directory called plasmid-align that includes all necessary scripts.
+
+Enter the new directory.
+
+```
+cd plasmid-align
+```
+Run the conda_setup script.
+```
+bash conda_setup.sh
+```
+You will be asked for your password. If you already have conda installed, this will only update package libraries and create a new environment.
+
 
 Usage
 ================================================================================
