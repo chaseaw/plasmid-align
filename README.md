@@ -1,3 +1,13 @@
+Analysis of Nextera-NGS sequenced plasmids
+================================================================================
+Description: This directory will enable easy analysis of plasmids sequenced by Nextera XT library prep.
+
+There are a number of ways to do this but this one should be comprehensive and relatively painless.
+
+[Go To Installation](#installation)
+
+[Go To Usage](#usage)
+
 Prerequisites for using this pipeline
 ================================================================================
 **1.** **Linux-based command-line terminal**
