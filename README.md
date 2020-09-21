@@ -91,7 +91,7 @@ From the directory with Sample folders, run plasmid-align.sh:
 source plasmid-align.sh Sample_*
 ```
 
-The * wildcard ensures all Sample folders will be analyzed.
+The * wildcard ensures all Sample folders will be analyzed. Could be run on a single folder as well.
 
 output files are final contigs .fa in the de_novo folder and the bam files in the ref_alignment folder.
 
