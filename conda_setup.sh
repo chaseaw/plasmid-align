@@ -18,14 +18,14 @@ if [ "$conVAL" -eq "0" ]; then
 
 	# Source terminal so conda can be run
 	FILE=`echo ~/.bashrc`
-	if test -f "$FILE"; then
-		echo `export PATH="~/miniconda3/bin:$PATH"` >> $FILE
+	if [[ -f "$FILE" ]]; then
+		echo 'export PATH="~/miniconda3/bin:$PATH"' >> $FILE
     	source $FILE
 	fi
 
 	FILE=`echo ~/.bash_profile`
-	if test -f "$FILE"; then
-		echo `export PATH="~/miniconda3/bin:$PATH"` >> $FILE
+	if [[ -f "$FILE" ]]; then
+		echo 'export PATH="~/miniconda3/bin:$PATH"' >> $FILE
     	source $FILE
 	fi
 else
