@@ -1,6 +1,6 @@
 Prerequisites for using this pipeline
 ================================================================================
-1. Linux-based command-line terminal
+**1.** **Linux-based command-line terminal**
   *  Should work natively on Mac terminal. For Windows, it requires the linux subsystem.
   
 * [WSL on Windows](https://www.windowscentral.com/install-windows-subsystem-linux-windows-10)
@@ -20,7 +20,7 @@ Prerequisites for using this pipeline
   
   *  First time using Ubuntu you will create a user name and password (Remember this!).
 
-2. Git
+**2.** **Git**
 
 *  From your terminal:
 
@@ -29,7 +29,7 @@ sudo apt update
 sudo apt install git
 ```
 
-3. IGV
+**3.** **IGV**
 
 Get IGV for your operating system (you don't need the command line version):
 * [IGV Software Download](http://software.broadinstitute.org/software/igv/download)
@@ -56,6 +56,35 @@ bash conda_setup.sh
 ```
 You will be asked for your password. If you already have conda installed, this will only update package libraries and create a new environment.
 
+To make sure everything is working properly, run the plasmid-align.sh script in place on included test data:
+```
+source plasmid-align.sh Test_Data*
+```
+You should see the script running. Test_Data directories should now both have populated de_novo and ref_alignment folders.
+
+The Test_1_Data will output a perfect alignment to reference, while Test_Data_2 will show examples of mutations, deletions, and insertions by IGV.
 
 Usage
 ================================================================================
+copy the Sample-folders.sh and plasmid-align.sh files to a directory containing plasmid seuqencing paired-end reads still in Illumina format fastq.gz.
+
+From the directory with reads, run the Sample-folders.sh script to unzip and separate R1 and R2 samples into their own folder.
+
+```
+bash Sample-folders.sh
+```
+Each Sample folder needs a reference fasta sequence file (.fa) if you want to align to a known sequence.
+
+From the directory with Sample folders, run plasmid-align.sh:
+
+```
+source plasmid-align.sh Sample_*
+```
+
+The * wildcard ensures all Sample folders will be analyzed.
+
+output files are final contigs .fa in the de_novo folder and the bam files in the ref_alignment folder.
+
+The longest contigs in the final contigs .fa file are usually the entire plasmid sequence, but not always perfect with repetitive regions.
+
+Run IGV loading the reference .fa as genome and your new .bam as a track to identify any sequence changes.
