@@ -26,7 +26,7 @@ Prerequisites for using this pipeline
   
   *  Restart your computer.
   
-  *  Download Ubuntu linux from the Windows Store (This is your terminal).
+  *  Download Ubuntu from the Microsoft Store App (Ubuntu will be your terminal).
   
   *  First time using Ubuntu you will create a user name and password (Remember this!).
 
