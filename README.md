@@ -18,7 +18,7 @@ Prerequisites for using this pipeline
   
   *  Click on Apps.
     
-  *  Scroll down to Related settings, and click on "Programs and Features".
+  *  Under Related settings, click on "Programs and Features".
     
   *  In the upper left corner, click on "Turn Windows features on or off".
     
