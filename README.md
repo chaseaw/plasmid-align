@@ -72,7 +72,7 @@ source plasmid-align.sh Test_Data*
 ```
 You should see the script running. Test_Data directories should now both have populated de_novo and ref_alignment folders.
 
-The Test_1_Data will output a perfect alignment to reference, while Test_Data_2 will show examples of mutations, deletions, and insertions by IGV.
+The Test_Data_1 will output a perfect alignment to reference, while Test_Data_2 will show examples of mutations, deletions, and insertions by IGV.
 
 Usage
 ================================================================================
