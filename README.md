@@ -64,7 +64,9 @@ Run the conda_setup script.
 ```
 bash conda_setup.sh
 ```
-You will be asked for your password. If you already have conda installed, this will only update package libraries and create a new environment.
+You may be asked for your password. If conda is already installed, this will only update package libraries and create a new environment.
+
+Sometimes conda does not properly initialize. If an error appears, usually running ```bash conda_setup.sh``` again will fix it. 
 
 To make sure everything is working properly, run the plasmid-align.sh script in place on included test data:
 ```
