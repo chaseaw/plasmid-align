@@ -76,16 +76,36 @@ The Test_Data_1 will output a perfect alignment to reference, while Test_Data_2 
 
 Usage
 ================================================================================
-copy the Sample-folders.sh and plasmid-align.sh files to a directory containing plasmid seuqencing paired-end reads still in Illumina format fastq.gz.
+make a new directory to put reads into, and change into your new directory.
 
-From the directory with reads, run the Sample-folders.sh script to unzip and separate R1 and R2 samples into their own folder.
+```
+mkdir <Today's Date>_Plasmid_Sequencing
+cd <Today's Date>_Plasmid_Sequencing
+```
+
+retrieve your files from the link provided by the SIC.
+
+```
+wget -r -nH --cut-dirs=2 --no-parent --reject="index.html*" https://htcf.wustl.edu/files/<Your Directory>/
+```
+The --cut-dirs=2 option refers to the number of directories between the .edu site and your files (which is 2 in the example).
+
+copy the Sample-folders.sh and plasmid-align.sh files to this new directory containing plasmid seuqencing paired-end reads still in Illumina format fastq.gz.
+
+From this directory, run the Sample-folders.sh script to unzip and separate R1 and R2 samples into their own folder.
 
 ```
 bash Sample-folders.sh
 ```
 Each Sample folder needs a reference fasta sequence file (.fa) if you want to align to a known sequence.
 
-From the directory with Sample folders, run plasmid-align.sh:
+An easy way to drop fasta files into these folders in windows is to open the linux subsystem in explorer
+
+```
+explorer.exe .
+```
+
+After adding each fasta file, from the directory with Sample folders, run plasmid-align.sh:
 
 ```
 source plasmid-align.sh Sample_*
@@ -98,3 +118,4 @@ output files are final contigs .fa in the de_novo folder and the bam files in th
 The longest contigs in the final contigs .fa file are usually the entire plasmid sequence, but not always perfect with repetitive regions.
 
 Run IGV loading the reference .fa as genome and your new .bam as a track to identify any sequence changes.
+
