@@ -41,7 +41,7 @@ conda config --add channels bioconda
 conda config --add channels conda-forge 
 
 # create conda environment for plasmid alignment
-conda create -n plasmid-align bwa-mem2 samtools megahit
+conda create -n plasmid-align bwa-mem2=2.1 samtools=1.11 megahit=1.2.9
 
 # initialize conda
 conda init bash
