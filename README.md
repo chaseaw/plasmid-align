@@ -94,18 +94,29 @@ The --cut-dirs=2 option refers to the number of directories between the .edu sit
 
 copy the Sample-folders.sh and plasmid-align.sh files to this new directory containing plasmid seuqencing paired-end reads still in Illumina format fastq.gz.
 
-From this directory, run the Sample-folders.sh script to unzip and separate R1 and R2 samples into their own folder.
+An easy way to copy or move files between these folders in windows is to open the linux subsystem in explorer
+
+```
+explorer.exe .
+```
+
+Alternatively, you can use the copy command in bash to move the run files to your folder.
+
+From Your Directory:
+```
+cp ../Sample-folders.sh ./Sample-folders.sh
+cp ../plasmid-align.sh ./plasmid-align.sh
+```
+This assumes that you made your directory in the plasmid-align folder (thus ../ or up one directory) and that you are copying to your current directory (./)
+
+From Your Directory, run the Sample-folders.sh script to unzip and separate R1 and R2 samples into their own folder.
 
 ```
 bash Sample-folders.sh
 ```
 Each Sample folder needs a reference fasta sequence file (.fa) if you want to align to a known sequence.
 
-An easy way to drop fasta files into these folders in windows is to open the linux subsystem in explorer
-
-```
-explorer.exe .
-```
+Here I find that using the ```explorer.exe .``` command is very helpful for dropping fasta files into the Sample Folders.
 
 After adding each fasta file, from the directory with Sample folders, run plasmid-align.sh:
 
@@ -120,4 +131,3 @@ output files are final contigs .fa in the de_novo folder and the bam files in th
 The longest contigs in the final contigs .fa file are usually the entire plasmid sequence, but not always perfect with repetitive regions.
 
 Run IGV loading the reference .fa as genome and your new .bam as a track to identify any sequence changes.
-
