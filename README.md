@@ -116,6 +116,8 @@ bash Sample-folders.sh
 ```
 Each Sample folder needs a reference fasta sequence file (.fa) if you want to align to a known sequence.
 
+Here I find that using the ```explorer.exe .``` command is very helpful for dropping fasta files into the Sample Folders.
+
 After adding each fasta file, from the directory with Sample folders, run plasmid-align.sh:
 
 ```
