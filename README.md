@@ -94,18 +94,27 @@ The --cut-dirs=2 option refers to the number of directories between the .edu sit
 
 copy the Sample-folders.sh and plasmid-align.sh files to this new directory containing plasmid seuqencing paired-end reads still in Illumina format fastq.gz.
 
-From this directory, run the Sample-folders.sh script to unzip and separate R1 and R2 samples into their own folder.
+An easy way to copy or move files between these folders in windows is to open the linux subsystem in explorer
+
+```
+explorer.exe .
+```
+
+Alternatively, you can use the copy command in bash to move the run files to your folder.
+
+From Your Directory:
+```
+cp ../Sample-folders.sh ./Sample-folders.sh
+cp ../plasmid-align.sh ./plasmid-align.sh
+```
+This assumes that you made your directory in the plasmid-align folder (thus ../ or up one directory) and that you are copying to your current directory (./)
+
+From Your Directory, run the Sample-folders.sh script to unzip and separate R1 and R2 samples into their own folder.
 
 ```
 bash Sample-folders.sh
 ```
 Each Sample folder needs a reference fasta sequence file (.fa) if you want to align to a known sequence.
-
-An easy way to drop fasta files into these folders in windows is to open the linux subsystem in explorer
-
-```
-explorer.exe .
-```
 
 After adding each fasta file, from the directory with Sample folders, run plasmid-align.sh:
 
