@@ -64,8 +64,8 @@ do
 	# output directory is specified as de_novo
 	outname=`echo ./$folder/de_novo`
 
-	# runs de novo alignment using megahit (default is -t 4 cores/threads and -m half (0.5) system memory)	
-	megahit -t 4 -m 0.5 -1 "${name2}" -2 "${name3}" -o "${outname}"
+	# runs de novo alignment using megahit (default is -t 4 cores/threads, -m half (0.5) system memory, and target contig length --min-contig-len > 1000)	
+	megahit -t 4 -m 0.5 --min-contig-len 1000 -1 "${name2}" -2 "${name3}" -o "${outname}"
 	echo "$folder de novo assembly completed=$( date +%s )" >> ${log_file}
 
 	# if a reference fasta was provided, uses bwa-mem2 to align reads to reference
