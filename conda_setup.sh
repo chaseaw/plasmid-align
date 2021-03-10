@@ -20,17 +20,22 @@ if [ "$conVAL" -eq "0" ]; then
 	FILE=`echo ~/.bashrc`
 	if [[ -f "$FILE" ]]; then
 		echo 'export PATH="~/miniconda3/bin:$PATH"' >> $FILE
-    	source $FILE
+    		source $FILE
 	fi
 
 	FILE=`echo ~/.bash_profile`
 	if [[ -f "$FILE" ]]; then
 		echo 'export PATH="~/miniconda3/bin:$PATH"' >> $FILE
-    	source $FILE
+    		source $FILE
 	fi
 else
 	echo "conda installation detected=$conDIR"
 fi
+
+# initialize conda
+conda init bash
+
+exec $SHELL
 
 # update conda
 yes | conda update conda 
@@ -42,9 +47,3 @@ conda config --add channels conda-forge
 
 # create conda environment for plasmid alignment
 conda create -n plasmid-align bwa-mem2=2.1 samtools=1.11 megahit=1.2.9 trimmomatic=0.39
-
-# initialize conda
-conda init bash
-
-exec $SHELL
-
