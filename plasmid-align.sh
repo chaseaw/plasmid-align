@@ -61,11 +61,31 @@ do
 		name3=$R2files
 	fi
 
+	# trimmed fastqs output directory is specified as trimmed_fastqs
+	mkdir "./$folder/trimmed_fastqs/"
+	trimoutname2=`echo "./$folder/trimmed_fastqs/trimmed-paired-R1.fastq"`
+	trimoutname3=`echo "./$folder/trimmed_fastqs/trimmed-unpaired-R1.fastq"`
+	trimoutname4=`echo "./$folder/trimmed_fastqs/trimmed-paired-R2.fastq"`
+	trimoutname5=`echo "./$folder/trimmed_fastqs/trimmed-unpaired-R2.fastq"`
+
+	# checks whether an adapter file is included in directory and downloads if it is not
+	ADAPTFILE=./NexteraPE-PE.fa
+	
+	if [ -f "$ADAPTFILE" ]; then
+    		echo "$ADAPTFILE found."
+    	else
+		wget https://raw.githubusercontent.com/chaseaw/plasmid-align/master/NexteraPE-PE.fa
+	fi
+
+	# trims adapter sequences and low-quality basecalls using trimmomatic
+	trimmomatic PE -phred33 "${name2}" "${name3}" "${trimoutname2}" "${trimoutname3}" "${trimoutname4}" "${trimoutname5}" ILLUMINACLIP:NexteraPE-PE.fa:2:30:10 LEADING:10 TRAILING:10 SLIDINGWINDOW:4:15 MINLEN:50
+	echo "fastqs trimmed=$( date +%s )" >> ${log_file}
+
 	# output directory is specified as de_novo
 	outname=`echo ./$folder/de_novo`
 
 	# runs de novo alignment using megahit (default is -t 4 cores/threads, -m half (0.5) system memory, and target contig length --min-contig-len > 1000)	
-	megahit -t 4 -m 0.5 --min-contig-len 1000 -1 "${name2}" -2 "${name3}" -o "${outname}"
+	megahit -t 4 -m 0.5 --min-contig-len 1000 -1 "${trimoutname2}" -2 "${trimoutname4}" -o "${outname}"
 	echo "$folder de novo assembly completed=$( date +%s )" >> ${log_file}
 
 	# if a reference fasta was provided, uses bwa-mem2 to align reads to reference
@@ -76,7 +96,7 @@ do
 		echo "$folder fasta indexed=$( date +%s )" >> ${log_file}
 
 		# aligns reads and uses samtools to convert to .bam file
-		bwa-mem2 mem -t 2 "${name1}" "${name2}" "${name3}" | samtools sort -o "$name1.bam" 
+		bwa-mem2 mem -t 2 "${name1}" "${trimoutname2}" "${trimoutname4}" | samtools sort -o "$name1.bam" 
 		echo "$folder reads aligned=$( date +%s )" >> ${log_file}
 
 		# creates the .bam index file (.bai) necessary to load into IGV
