@@ -92,7 +92,7 @@ wget -r -nH --cut-dirs=2 --no-parent --reject="index.html*" https://htcf.wustl.e
 ```
 The --cut-dirs=2 option refers to the number of directories between the .edu site and your files (which is 2 in the example).
 
-copy the Sample-folders.sh and plasmid-align.sh files to this new directory containing plasmid seuqencing paired-end reads still in Illumina format fastq.gz.
+copy the Sample-folders.sh and plasmid-align.sh files to this new directory containing plasmid sequencing paired-end reads still in Illumina format fastq.gz.
 
 An easy way to copy or move files between these folders in windows is to open the linux subsystem in explorer
 
