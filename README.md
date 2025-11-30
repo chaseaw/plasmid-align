@@ -25,7 +25,7 @@ sudo apt install git
 Get IGV for your operating system (you don't need the command line version):
 * [IGV Software Download](http://software.broadinstitute.org/software/igv/download)
 
-**3.** **Dependencies** (see conda yml for details)
+**3.** **Conda and Dependencies** (see conda yml for details)
 * python-based scipt
 * fastp for trimming
 * bwa aligner for illumina reference alignment
@@ -44,6 +44,26 @@ git clone https://github.com/chaseaw/plasmid_seq.git
 
 This will create a directory called plasmid_seq that includes all necessary scripts.
 
+To create replica conda environment on great lakes cluster:
+```
+conda create --name plasmid_seq --file plasmid_seq-spec.txt
+```
+To assemble replica environment on other systems:
+```
+conda env create -f plasmid_seq.yml -n plasmid_seq
+```
+To assemble environment from scratch:
+```
+conda create -n plasmid_seq -c conda-forge -c bioconda -c defaults \
+    python=3.11 \
+    bwa \
+    fastp \
+    flye \
+    minimap2 \
+    samtools \
+    spades \
+    seqtk
+```
 Add plasmid_seq.py and make executable to your path for future use.
 
 Usage
